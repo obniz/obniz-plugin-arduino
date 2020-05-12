@@ -1,6 +1,5 @@
 menu.UploadSpeed=Upload Speed
 menu.CPUFreq=CPU Frequency
-menu.FlashFreq=Flash Frequency
 menu.DebugLevel=Core Debug Level
 menu.PSRAM=PSRAM
 menu.Revision=Board Revision
@@ -55,12 +54,6 @@ esp32.menu.CPUFreq.13.build.f_cpu=13000000L
 esp32.menu.CPUFreq.10=10MHz (40MHz XTAL)
 esp32.menu.CPUFreq.10.build.f_cpu=10000000L
 
-
-esp32.menu.FlashFreq.80=80MHz
-esp32.menu.FlashFreq.80.build.flash_freq=80m
-esp32.menu.FlashFreq.40=40MHz
-esp32.menu.FlashFreq.40.build.flash_freq=40m
-
 esp32.menu.UploadSpeed.921600=921600
 esp32.menu.UploadSpeed.921600.upload.speed=921600
 esp32.menu.UploadSpeed.115200=115200
@@ -108,7 +101,7 @@ pico32.build.board=ESP32_PICO
 
 pico32.build.f_cpu=240000000L
 pico32.build.flash_size=4MB
-pico32.build.flash_freq=80m
+pico32.build.flash_freq=40m
 pico32.build.flash_mode=dio
 pico32.build.boot=dio
 pico32.build.partitions=partitions_two_ota_coredump
@@ -171,13 +164,7 @@ esp32-gateway.build.flash_size=4MB
 esp32-gateway.build.boot=dio
 esp32-gateway.build.partitions=partitions_two_ota_coredump
 esp32-gateway.build.defines=
-
-esp32-gateway.menu.FlashFreq.80=80MHz
-esp32-gateway.menu.FlashFreq.80.build.flash_freq=80m
-esp32-gateway.menu.FlashFreq.40=40MHz
-esp32-gateway.menu.FlashFreq.40.build.flash_freq=40m
-
-
+esp32-gateway.build.flash_freq=40m
 esp32-gateway.menu.UploadSpeed.115200=115200
 esp32-gateway.menu.UploadSpeed.115200.upload.speed=115200
 
@@ -198,19 +185,13 @@ esp32-poe.build.mcu=esp32
 esp32-poe.build.core=esp32
 esp32-poe.build.variant=esp32-poe
 esp32-poe.build.board=ESP32_POE
-
+esp32-poe.build.flash_freq=40m
 esp32-poe.build.f_cpu=240000000L
 esp32-poe.build.flash_mode=dio
 esp32-poe.build.flash_size=4MB
 esp32-poe.build.boot=dio
 esp32-poe.build.partitions=partitions_two_ota_coredump
 esp32-poe.build.defines=
-
-esp32-poe.menu.FlashFreq.80=80MHz
-esp32-poe.menu.FlashFreq.80.build.flash_freq=80m
-esp32-poe.menu.FlashFreq.40=40MHz
-esp32-poe.menu.FlashFreq.40.build.flash_freq=40m
-
 
 esp32-poe.menu.UploadSpeed.115200=115200
 esp32-poe.menu.UploadSpeed.115200.upload.speed=115200
@@ -235,15 +216,10 @@ m5stack-core-esp32.build.board=M5Stack_Core_ESP32
 m5stack-core-esp32.build.f_cpu=240000000L
 m5stack-core-esp32.build.flash_size=4MB
 m5stack-core-esp32.build.flash_mode=dio
+m5stack-core-esp32.build.flash_freq=40m
 m5stack-core-esp32.build.boot=dio
 m5stack-core-esp32.build.partitions=partitions_two_ota_coredump
 m5stack-core-esp32.build.defines=
-
-
-m5stack-core-esp32.menu.FlashFreq.80=80MHz
-m5stack-core-esp32.menu.FlashFreq.80.build.flash_freq=80m
-m5stack-core-esp32.menu.FlashFreq.40=40MHz
-m5stack-core-esp32.menu.FlashFreq.40.build.flash_freq=40m
 
 m5stack-core-esp32.menu.UploadSpeed.921600=921600
 m5stack-core-esp32.menu.UploadSpeed.921600.upload.speed=921600
@@ -292,7 +268,7 @@ m5stick-c.build.board=M5Stick_C
 
 m5stick-c.build.f_cpu=240000000L
 m5stick-c.build.flash_size=4MB
-m5stick-c.build.flash_freq=80m
+m5stick-c.build.flash_freq=40m
 m5stick-c.build.flash_mode=dio
 m5stick-c.build.boot=dio
 m5stick-c.build.partitions=partitions_two_ota_coredump
