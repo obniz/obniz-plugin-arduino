@@ -12,7 +12,7 @@ extern "C" {
 void obniz_plugin_init();
 void obniz_plugin_start();
 int obniz_plugin_device_key(char *id, char *key);
-
+void ui_log(char *text);
 #ifdef __cplusplus
 }
 #endif
