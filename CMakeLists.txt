@@ -51,6 +51,7 @@ set(LIBRARY_SRCS
   libraries/SPIFFS/src/SPIFFS.cpp
   libraries/SPI/src/SPI.cpp
   libraries/Ticker/src/Ticker.cpp
+  libraries/Wire/src/Wire.cpp
   )
 
 set(COMPONENT_SRCS ${CORE_SRCS} ${LIBRARY_SRCS})
@@ -69,6 +70,7 @@ set(COMPONENT_ADD_INCLUDEDIRS
   libraries/SPIFFS/src
   libraries/SPI/src
   libraries/Ticker/src
+  libraries/Wire/src
   )
 
 set(COMPONENT_PRIV_INCLUDEDIRS cores/esp32/libb64)
