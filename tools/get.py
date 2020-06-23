@@ -106,6 +106,7 @@ def get_tool(tool):
     archive_name = tool['archiveFileName']
     local_path = dist_dir + archive_name
     url = tool['url']
+    print('local_path : ' + local_path )
     if not os.path.isfile(local_path):
         print('Downloading ' + archive_name + ' ...')
         sys.stdout.flush()
