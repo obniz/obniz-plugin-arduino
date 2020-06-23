@@ -18,6 +18,9 @@ else
 	export GITHUB_REPOSITORY="espressif/arduino-esp32"
 fi
 
+echo GITHUB_WORKSPACE
+echo GITHUB_REPOSITORY
+
 CHUNK_INDEX=$1
 CHUNKS_CNT=$2
 BUILD_PIO=0

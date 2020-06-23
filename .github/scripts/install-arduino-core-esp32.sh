@@ -1,11 +1,11 @@
 #!/bin/bash
 
-export ARDUINO_ESP32_PATH="$ARDUINO_USR_PATH/hardware/espressif/esp32"
+export ARDUINO_ESP32_PATH="$ARDUINO_USR_PATH/hardware/obniz/esp32"
 if [ ! -d "$ARDUINO_ESP32_PATH" ]; then
 	echo "Installing ESP32 Arduino Core ..."
 	script_init_path="$PWD"
-	mkdir -p "$ARDUINO_USR_PATH/hardware/espressif"
-	cd "$ARDUINO_USR_PATH/hardware/espressif"
+	mkdir -p "$ARDUINO_USR_PATH/hardware/obniz"
+	cd "$ARDUINO_USR_PATH/hardware/obniz"
 
 	echo "Installing Python Serial ..."
 	pip install pyserial > /dev/null
@@ -15,13 +15,8 @@ if [ ! -d "$ARDUINO_ESP32_PATH" ]; then
 		pip install requests > /dev/null
 	fi
 
-	if [ "$GITHUB_REPOSITORY" == "espressif/arduino-esp32" ];  then
-		echo "Linking Core..."
-		ln -s $GITHUB_WORKSPACE esp32
-	else
-		echo "Cloning Core Repository..."
-		git clone https://github.com/espressif/arduino-esp32.git esp32 > /dev/null 2>&1
-	fi
+  echo "Cloning Core Repository..."
+  git clone https://github.com/obniz/obniz-plugin-arduino.git esp32 > /dev/null 2>&1
 
 	echo "Updating Submodules ..."
 	cd esp32
