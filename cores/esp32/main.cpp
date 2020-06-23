@@ -13,6 +13,7 @@ void loopTask(void *pvParameters)
 {
     setup();
     for(;;) {
+        vTaskDelay(1);
         if(loopTaskWDTEnabled){
             esp_task_wdt_reset();
         }

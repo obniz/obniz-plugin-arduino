@@ -79,6 +79,7 @@ typedef struct {
 static InterruptHandle_t __pinInterruptHandlers[GPIO_PIN_COUNT] = {0,};
 
 #include "driver/rtc_io.h"
+#include "obniz_plugin.h"
 
 extern void IRAM_ATTR __pinMode(uint8_t pin, uint8_t mode)
 {
@@ -86,7 +87,7 @@ extern void IRAM_ATTR __pinMode(uint8_t pin, uint8_t mode)
     if(!digitalPinIsValid(pin)) {
         return;
     }
-
+    obniz_plugin_io_reserve(pin);
     uint32_t rtc_reg = rtc_gpio_desc[pin].reg;
     if(mode == ANALOG) {
         if(!rtc_reg) {
