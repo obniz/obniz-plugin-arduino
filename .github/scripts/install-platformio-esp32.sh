@@ -9,7 +9,7 @@ echo "Installing PlatformIO ..."
 pip install -U https://github.com/platformio/platformio/archive/develop.zip > /dev/null 2>&1
 
 echo "Installing Platform ESP32 ..."
-python -m platformio platform install https://github.com/obniz/platform-espressif32 > /dev/null 2>&1
+python -m platformio platform install https://github.com/obniz/platform-espressif32.git > /dev/null 2>&1
 
 echo "Cloning Core Repository ..."
 git clone https://github.com/obniz/obniz-plugin-arduino.git "$PLATFORMIO_ESP32_PATH" > /dev/null 2>&1
