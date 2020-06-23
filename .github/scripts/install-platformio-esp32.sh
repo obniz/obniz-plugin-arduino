@@ -9,19 +9,10 @@ echo "Installing PlatformIO ..."
 pip install -U https://github.com/platformio/platformio/archive/develop.zip > /dev/null 2>&1
 
 echo "Installing Platform ESP32 ..."
-python -m platformio platform install https://github.com/platformio/platform-espressif32.git > /dev/null 2>&1
+python -m platformio platform install https://github.com/obniz/platform-espressif32 > /dev/null 2>&1
 
-echo "Replacing the framework version ..."
-if [[ "$OSTYPE" == "darwin"* ]]; then
-	sed 's/https:\/\/github\.com\/obniz\/obniz-plugin-arduino\.git/*/' "$HOME/.platformio/platforms/espressif32/platform.json" > "platform.json"
-	mv -f "platform.json" "$HOME/.platformio/platforms/espressif32/platform.json"
-else
-	sed -i 's/https:\/\/github\.com\/obniz\/obniz-plugin-arduino\.git/*/' "$HOME/.platformio/platforms/espressif32/platform.json"
-fi
-cat "$HOME/.platformio/platforms/espressif32/platform.json"
-
-echo "Cloning Core Repository ..."
-git clone https://github.com/obniz/obniz-plugin-arduino.git "$PLATFORMIO_ESP32_PATH" > /dev/null 2>&1
+#echo "Cloning Core Repository ..."
+#git clone https://github.com/obniz/obniz-plugin-arduino.git "$PLATFORMIO_ESP32_PATH" > /dev/null 2>&1
 
 
 echo "PlatformIO for ESP32 has been installed"
