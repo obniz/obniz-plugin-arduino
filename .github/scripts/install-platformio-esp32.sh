@@ -20,8 +20,8 @@ else
 fi
 cat "$HOME/.platformio/platforms/espressif32/platform.json"
 
-	echo "Cloning Core Repository ..."
-	git clone https://github.com/obniz/obniz-plugin-arduino.git "$PLATFORMIO_ESP32_PATH" > /dev/null 2>&1
+echo "Cloning Core Repository ..."
+git clone https://github.com/obniz/obniz-plugin-arduino.git "$PLATFORMIO_ESP32_PATH" > /dev/null 2>&1
 
 
 echo "PlatformIO for ESP32 has been installed"
@@ -39,7 +39,9 @@ function build_pio_sketch(){ # build_pio_sketch <board> <path-to-ino>
     local sketch_dir=$(dirname "$sketch")
     echo ""
     echo "Compiling '"$(basename "$sketch")"' ..."
-    python -m platformio ci --board "$board" "$sketch_dir" --project-option="board_build.partitions = huge_app.csv"
+    echo "platformio start"
+    python -m platformio ci --board "$board" "$sketch_dir" --project-option="board_build.partitions = partitions_two_ota_coredump.csv"
+    ls -al "$PLATFORMIO_ESP32_PATH/libraries"
 }
 
 function count_sketches() # count_sketches <examples-path>
