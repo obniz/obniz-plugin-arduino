@@ -11,8 +11,8 @@ pip install -U https://github.com/platformio/platformio/archive/develop.zip > /d
 echo "Installing Platform ESP32 ..."
 python -m platformio platform install https://github.com/obniz/platform-espressif32 > /dev/null 2>&1
 
-#echo "Cloning Core Repository ..."
-#git clone https://github.com/obniz/obniz-plugin-arduino.git "$PLATFORMIO_ESP32_PATH" > /dev/null 2>&1
+echo "Cloning Core Repository ..."
+git clone https://github.com/obniz/obniz-plugin-arduino.git "$PLATFORMIO_ESP32_PATH" > /dev/null 2>&1
 
 
 echo "PlatformIO for ESP32 has been installed"
