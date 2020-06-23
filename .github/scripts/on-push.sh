@@ -54,13 +54,13 @@ if [ "$BUILD_PIO" -eq 0 ]; then
 		fi
 		build_sketches "$FQBN" "$ARDUINO_ESP32_PATH/libraries" "$CHUNK_INDEX" "$CHUNKS_CNT"
 	fi
-else
+#else
 	# PlatformIO Test
-	source ./.github/scripts/install-platformio-esp32.sh
-	BOARD="esp32dev"
-	ls -al "$PLATFORMIO_ESP32_PATH/libraries"
-
-	build_pio_sketch "$BOARD" "$PLATFORMIO_ESP32_PATH/libraries/obniz/examples/led_blink/led_blink.ino" && \
-	build_pio_sketch "$BOARD" "$PLATFORMIO_ESP32_PATH/libraries/obniz/examples/setup_key/setup_key.ino"
+#	source ./.github/scripts/install-platformio-esp32.sh
+#	BOARD="esp32dev"
+#	ls -al "$PLATFORMIO_ESP32_PATH/libraries"
+#
+#	build_pio_sketch "$BOARD" "$PLATFORMIO_ESP32_PATH/libraries/obniz/examples/led_blink/led_blink.ino" && \
+#	build_pio_sketch "$BOARD" "$PLATFORMIO_ESP32_PATH/libraries/obniz/examples/setup_key/setup_key.ino"
 	#build_pio_sketches esp32dev "$PLATFORMIO_ESP32_PATH/libraries"
 fi
