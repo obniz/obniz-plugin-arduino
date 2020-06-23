@@ -18,7 +18,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 else
 	sed -i 's/https:\/\/github\.com\/obniz\/obniz-plugin-arduino\.git/*/' "$HOME/.platformio/platforms/espressif32/platform.json"
 fi
-
+cat "$HOME/.platformio/platforms/espressif32/platform.json"
 
 	echo "Cloning Core Repository ..."
 	git clone https://github.com/obniz/obniz-plugin-arduino.git "$PLATFORMIO_ESP32_PATH" > /dev/null 2>&1
