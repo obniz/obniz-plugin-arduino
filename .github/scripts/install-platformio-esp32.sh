@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export PLATFORMIO_ESP32_PATH="$HOME/.platformio/packages/framework-arduinoespressif32"
+export PLATFORMIO_ESP32_PATH="$HOME/.platformio/packages/framework-obniz-plugin-esp32"
 
 echo "Installing Python Wheel ..."
 pip install wheel > /dev/null 2>&1
