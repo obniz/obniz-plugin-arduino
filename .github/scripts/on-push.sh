@@ -38,7 +38,7 @@ git -C "$GITHUB_WORKSPACE" submodule update --init --recursive > /dev/null 2>&1
 
 if [ "$BUILD_PIO" -eq 0 ]; then
 	# ArduinoIDE Test
-	FQBN="obniz:esp32:esp32:PSRAM=enabled,PartitionScheme=huge_app"
+	FQBN="obniz:esp32:esp32:PSRAM=enabled,PartitionScheme=partitions_two_ota_coredump"
 	source ./.github/scripts/install-arduino-ide.sh
 	source ./.github/scripts/install-arduino-core-esp32.sh
 	if [ "$OS_IS_WINDOWS" == "1" ]; then
