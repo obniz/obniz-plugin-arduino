@@ -18,11 +18,15 @@ else
   echo "- cores copied"
   cp -r ./libraries ./$input/libraries
   echo "- libraries copied"
-  cp -r ./tools ./$input/tools
+  mkdir  $input/tools
+  cp -r ./tools/*.exe ./tools/*.py  ./$input/tools/
+  cp -r ./tools/partitions ./$input/tools
+  cp -r ./tools/sdk ./$input/tools
   echo "- tools copied"
   cp -r ./variants ./$input/variants
   echo "- variants copied"
-  cp boards.txt platform.txt programmers.txt ./$input/
+  cp boards.txt programmers.txt ./$input/
+  cp arduino_platform.txt ./$input/platform.txt
   echo "- settingfiles copied"
 
   echo "Create zip file"
