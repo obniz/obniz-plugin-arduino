@@ -42,6 +42,7 @@ void obniz_plugin_end();
 const char* obniz_plugin_os_version();
 const char* obniz_plugin_obniz_id();
 bool obniz_plugin_is_running();
+bool obniz_plugin_is_online();
 
 //command
 int obniz_plugin_send(uint8_t* data,uint16_t length);
