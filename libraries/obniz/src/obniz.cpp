@@ -56,7 +56,6 @@ const char* obniz_lib::getOsVersion() {
 
 // obnizOS Interface
 void obniz_plugin_receive(uint8_t *command, uint16_t length){
-    obniz_serial->printf("\nobniz_plugin_receive : %d",command);
     if(_commandFunc){
         _commandFunc(command,length);
     }
