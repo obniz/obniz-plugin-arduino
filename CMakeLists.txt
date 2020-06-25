@@ -1,3 +1,5 @@
+project(obnizPlugin)
+
 set(CORE_SRCS
   cores/esp32/base64.cpp
   cores/esp32/cbuf.cpp

@@ -4,8 +4,11 @@
 
 #include "obniz.h"
 HardwareSerial* obniz_serial = NULL;
+CallbackEventFunction _eventFunc = NULL;
+CallbackCommandFunction _commandFunc = NULL;
+
 int obniz_lib::start(){
-    return this->start(NULL,NULL,NULL);
+    return this->start(NULL,NULL,&Serial);
 }
 
 int obniz_lib::start(HardwareSerial* serial){
@@ -13,15 +16,11 @@ int obniz_lib::start(HardwareSerial* serial){
 }
 
 int obniz_lib::start(char *id, char *key){
-    return this->start(id,key,NULL);
+    return this->start(id,key,&Serial);
 }
 
 int obniz_lib::start(char *id, char *key, HardwareSerial* serial){
-    if(serial != NULL) {
-        obniz_serial = serial;
-    }else{
-        obniz_serial = &Serial;
-    }
+    obniz_serial = serial;
     obniz_plugin_init();
     int rst = 0;
     if(id != NULL && key != NULL){
@@ -35,22 +34,54 @@ void obniz_lib::end() {
     obniz_plugin_end();
 }
 
-void obniz_plugin_receive(uint8_t *command, uint32_t length){
-
+void obniz_lib::commandSend(uint8_t *data, uint16_t length) {
+    obniz_plugin_send(data,length);
 }
 
-void obniz_plugin_console_print(const char *text, uint8_t length){
-    obniz_serial->write((const uint8_t*)text,length);
+void obniz_lib::commandReceive(CallbackCommandFunction callbackCommandFunction) {
+    _commandFunc = callbackCommandFunction;
 }
 
-void obniz_plugin_console_input(uint8_t* text, uint8_t* length){
-    *length = obniz_serial->available();
-    if(*length != 0){
-        obniz_serial->read(text,*length);
+void obniz_lib::onEvent(CallbackEventFunction callbackEventFunction) {
+    _eventFunc = callbackEventFunction;
+}
+
+const char* obniz_lib::getId() {
+    return obniz_plugin_obniz_id();
+}
+
+const char* obniz_lib::getOsVersion() {
+    return obniz_plugin_os_version();
+}
+
+// obnizOS Interface
+void obniz_plugin_receive(uint8_t *command, uint16_t length){
+    obniz_serial->printf("\nobniz_plugin_receive : %d",command);
+    if(_commandFunc){
+        _commandFunc(command,length);
     }
 }
 
-void obniz_plugin_event(uint16_t command, uint8_t* data, uint16_t length){
-    obniz_serial->printf("\nevent : %d",command);
+void obniz_plugin_console_print(const char *text, uint8_t length){
+    if(obniz_serial) {
+        obniz_serial->write((const uint8_t *) text, length);
+    }
+}
+
+void obniz_plugin_console_input(uint8_t* text, uint32_t* length){
+    if(obniz_serial) {
+        *length = obniz_serial->available();
+        if (*length != 0) {
+            obniz_serial->read(text, *length);
+        }
+    }else{
+        *length = 0;
+    }
+}
+
+void obniz_plugin_event(os_event_t event, uint8_t* data, uint16_t length){
+    if(_eventFunc){
+        _eventFunc(event,data,length);
+    }
 }
 obniz_lib obniz;
