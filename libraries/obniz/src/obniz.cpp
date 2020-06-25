@@ -34,8 +34,8 @@ void obniz_lib::end() {
     obniz_plugin_end();
 }
 
-void obniz_lib::commandSend(uint8_t *data, uint16_t length) {
-    obniz_plugin_send(data,length);
+int obniz_lib::commandSend(uint8_t *data, uint16_t length) {
+    return obniz_plugin_send(data,length);
 }
 
 void obniz_lib::commandReceive(CallbackCommandFunction callbackCommandFunction) {

@@ -25,7 +25,7 @@ public:
     void pinFree(uint8_t pin);
 
     // obnizOS data command
-    void commandSend(uint8_t* data,uint16_t length);
+    int commandSend(uint8_t* data,uint16_t length);
     void commandReceive(CallbackCommandFunction commandCallBackFunction);
 
     // obnizOS event
