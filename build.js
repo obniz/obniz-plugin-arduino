@@ -56,6 +56,6 @@ jsonObject.packages[0].platforms.push(
     }
 );
 
-fs.writeFileSync('./docs/package_obniz_index.json', JSON.stringify(jsonObject,null , "\t"));
+fs.writeFileSync('./docs/package_obniz_index.json', JSON.stringify(jsonObject,null , "  "));
 
 console.log("Node Build end");
