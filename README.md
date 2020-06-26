@@ -1,3 +1,5 @@
+![ESP32 Arduino CI](https://github.com/obniz/obniz-plugin-arduino/workflows/ESP32%20Arduino%20CI/badge.svg)
+
 # Arduino core for the obniz
 
 Arduinoとしてobnizの機能を扱えるようになるプラグインになります。
