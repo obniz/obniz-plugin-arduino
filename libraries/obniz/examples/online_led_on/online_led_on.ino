@@ -30,7 +30,7 @@ void onEvent(os_event_t event, uint8_t* data, uint16_t length) {
 
 void setup() {
   Serial.begin(115200);
-  Serial.println("online led ok start!");
+  Serial.println("online led start!");
 
   obniz.onEvent(onEvent);
 
@@ -40,4 +40,5 @@ void setup() {
 }
 void loop() {
   digitalWrite(LED_IO, onlineFlg);
+  delay(500);
 }

@@ -1,7 +1,7 @@
 #include <obniz.h>
 void setup() {
   Serial.begin(115200);
-  obniz.start();
+  obniz.start(NULL);
 
   while(!obniz.getId());
   Serial.printf("obnizID : %s\n",obniz.getId());

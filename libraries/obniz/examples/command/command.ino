@@ -1,6 +1,6 @@
 #include <obniz.h>
 void onCommand(uint8_t* data, uint16_t length){
-  Serial.println("onCommand");
+  Serial.println("\nonCommand");
   Serial.write(data,length);
   Serial.println("\nEnd onCommand");
 }
@@ -15,13 +15,14 @@ void setup() {
   Serial.printf("obnizID : %s\n",obniz.getId());
 }
 
-char buff[100];
+char message[20];
 uint8_t counter = 0;
 void loop() {
-  sprintf(buff,"obniz_message:%d",counter);
+  sprintf(message,"obniz_message:%d",counter);
   counter++;
 
-  if(!obniz.commandSend((uint8_t*)buff,strlen(buff))){
-    Serial.printf("send message : %s\n",buff);
+  if(!obniz.commandSend((uint8_t*)message,strlen(message))){
+    Serial.printf("send message : %s\n",message);
   }
+  delay(1000);
 }
