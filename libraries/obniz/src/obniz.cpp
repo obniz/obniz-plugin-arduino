@@ -54,6 +54,14 @@ const char* obniz_lib::getOsVersion() {
     return obniz_plugin_os_version();
 }
 
+bool obniz_lib::isRunning() {
+  return obniz_plugin_is_running();
+}
+
+bool obniz_lib::isOnline() {
+  return obniz_plugin_is_online();
+}
+
 // obnizOS Interface
 void obniz_plugin_receive(uint8_t *command, uint16_t length){
     if(_commandFunc){

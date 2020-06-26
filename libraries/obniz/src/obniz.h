@@ -34,6 +34,9 @@ public:
     //util
     const char* getId();
     const char* getOsVersion();
+
+    bool isRunning();
+    bool isOnline();
 private:
 
 };
