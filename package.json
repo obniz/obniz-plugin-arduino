@@ -1,6 +1,6 @@
 {
     "name": "framework-obniz-plugin-esp32",
     "description": "obniz plugin Arduino Wiring-based Framework (ESP32 Core)",
-    "version": "0.0.4",
+    "version": "0.1.0",
     "url": "https://github.com/obniz/obniz-plugin-arduino"
 }
