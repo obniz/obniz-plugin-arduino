@@ -12,17 +12,18 @@ obniz	KEYWORD1
 # Methods and Functions (KEYWORD2)
 #######################################
 
-start 			KEYWORD2
-end 			KEYWORD2
-pinReserve 		KEYWORD2
-pinFree 		KEYWORD2
-commandSend 	KEYWORD2
-commandReceive 	KEYWORD2
-onEvent 		KEYWORD2
-getId 			KEYWORD2
-getOsVersion 	KEYWORD2
-isRunning 		KEYWORD2
-isOnline 		KEYWORD2
+start 				KEYWORD2
+end 				KEYWORD2
+pinReserve 			KEYWORD2
+pinFree 			KEYWORD2
+commandSend 		KEYWORD2
+commandReceive 		KEYWORD2
+onEvent 			KEYWORD2
+getId 				KEYWORD2
+getOsVersion 		KEYWORD2
+isRunning 			KEYWORD2
+isOnline 			KEYWORD2
+startSettingPage	KEYWORD2
 
 #######################################
 # Constants (LITERAL1)

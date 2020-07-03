@@ -31,6 +31,9 @@ public:
     // obnizOS event
     void onEvent(CallbackEventFunction eventCallBackFunction);
 
+    // obnizOS initWiFiSettingPage
+    bool startSettingPage();
+
     //util
     const char* getId();
     const char* getOsVersion();

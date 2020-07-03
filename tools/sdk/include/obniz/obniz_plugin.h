@@ -26,6 +26,8 @@ typedef enum {
     PLUGIN_EVENT_OTA_START = 30,
     PLUGIN_EVENT_OTA_END,
     PLUGIN_EVENT_OTA_ERROR,
+
+    PLUGIN_EVENT_INITIALIZED = 40,
 } os_event_t;
 
 // obniz start
@@ -58,6 +60,9 @@ extern void obniz_plugin_console_input(uint8_t* text, uint32_t* length);
 
 //event
 extern void obniz_plugin_event(os_event_t event, uint8_t* data, uint16_t length);
+
+//init setting
+bool obniz_plugin_init_setting_page();
 
 #ifdef __cplusplus
 }

@@ -46,6 +46,10 @@ void obniz_lib::onEvent(CallbackEventFunction callbackEventFunction) {
     _eventFunc = callbackEventFunction;
 }
 
+bool obniz_lib::startSettingPage(){
+    return obniz_plugin_init_setting_page();
+}
+
 const char* obniz_lib::getId() {
     return obniz_plugin_obniz_id();
 }
