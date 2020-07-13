@@ -56,6 +56,8 @@ esp32.menu.CPUFreq.10.build.f_cpu=10000000L
 
 esp32.menu.UploadSpeed.921600=921600
 esp32.menu.UploadSpeed.921600.upload.speed=921600
+esp32.menu.UploadSpeed.1500000=1500000
+esp32.menu.UploadSpeed.1500000.upload.speed=1500000
 esp32.menu.UploadSpeed.115200=115200
 esp32.menu.UploadSpeed.115200.upload.speed=115200
 esp32.menu.UploadSpeed.256000.windows=256000

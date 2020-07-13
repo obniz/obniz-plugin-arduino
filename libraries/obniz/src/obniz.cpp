@@ -66,6 +66,19 @@ bool obniz_lib::isOnline() {
   return obniz_plugin_is_online();
 }
 
+void obniz_lib::pinReserve(uint8_t pin) {
+  obniz_plugin_io_reserve(pin);
+}
+
+void obniz_lib::pinFree(uint8_t pin) {
+  obniz_plugin_io_free(pin);
+}
+
+// obnizOS app key
+bool obniz_lib::setKey(char *key_50_text) {
+  return obniz_plugin_key(key_50_text);
+}
+
 // obnizOS Interface
 void obniz_plugin_receive(uint8_t *command, uint16_t length){
     if(_commandFunc){
@@ -73,7 +86,7 @@ void obniz_plugin_receive(uint8_t *command, uint16_t length){
     }
 }
 
-void obniz_plugin_console_print(const char *text, uint8_t length){
+void obniz_plugin_console_print(const char *text, uint32_t length){
     if(obniz_serial) {
         obniz_serial->write((const uint8_t *) text, length);
     }

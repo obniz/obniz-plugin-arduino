@@ -55,7 +55,7 @@ void obniz_plugin_io_reserve(uint8_t io);
 void obniz_plugin_io_free(uint8_t io);
 
 //console
-extern void obniz_plugin_console_print(const char *text, uint8_t length);
+extern void obniz_plugin_console_print(const char *text, uint32_t length);
 extern void obniz_plugin_console_input(uint8_t* text, uint32_t* length);
 
 //event
@@ -64,6 +64,8 @@ extern void obniz_plugin_event(os_event_t event, uint8_t* data, uint16_t length)
 //init setting
 bool obniz_plugin_init_setting_page();
 
+//plugin identify
+bool obniz_plugin_key(char *plugin_key_50_text);
 #ifdef __cplusplus
 }
 #endif

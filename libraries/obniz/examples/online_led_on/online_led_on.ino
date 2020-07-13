@@ -24,6 +24,7 @@ void onEvent(os_event_t event, uint8_t* data, uint16_t length) {
   case PLUGIN_EVENT_OTA_START:
   case PLUGIN_EVENT_OTA_END:
   case PLUGIN_EVENT_OTA_ERROR:
+  case PLUGIN_EVENT_INITIALIZED:
     break;
   }
 }

@@ -34,6 +34,9 @@ public:
     // obnizOS initWiFiSettingPage
     bool startSettingPage();
 
+    // obnizOS APP key(Run before obniz.start())
+    bool setKey(char* key_50_text);
+
     //util
     const char* getId();
     const char* getOsVersion();

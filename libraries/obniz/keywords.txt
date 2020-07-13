@@ -24,6 +24,7 @@ getOsVersion 		KEYWORD2
 isRunning 			KEYWORD2
 isOnline 			KEYWORD2
 startSettingPage	KEYWORD2
+setKey				KEYWORD2
 
 #######################################
 # Constants (LITERAL1)
