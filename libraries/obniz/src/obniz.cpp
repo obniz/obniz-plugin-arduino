@@ -15,10 +15,6 @@ int obniz_lib::start(HardwareSerial* serial){
     return this->start(NULL,serial);
 }
 
-int obniz_lib::start(char *key){
-    return this->start(key,&Serial);
-}
-
 int obniz_lib::start(char *key, HardwareSerial* serial){
     obniz_serial = serial;
     obniz_plugin_init();
