@@ -8,23 +8,64 @@ CallbackEventFunction _eventFunc = NULL;
 CallbackCommandFunction _commandFunc = NULL;
 
 int obniz_lib::start(){
-    return this->start(NULL,NULL,&Serial);
+    return this->start(NULL,&Serial);
 }
 
 int obniz_lib::start(HardwareSerial* serial){
-    return this->start(NULL,NULL,serial);
+    return this->start(NULL,serial);
 }
 
-int obniz_lib::start(char *id, char *key){
-    return this->start(id,key,&Serial);
+int obniz_lib::start(char *key){
+    return this->start(key,&Serial);
 }
 
-int obniz_lib::start(char *id, char *key, HardwareSerial* serial){
+int obniz_lib::start(char *key, HardwareSerial* serial){
     obniz_serial = serial;
     obniz_plugin_init();
     int rst = 0;
-    if(id != NULL && key != NULL){
-        rst = obniz_plugin_device_key(id,key);
+    if(key != NULL) {
+        char obniz_id[32];
+        char obniz_key[255];
+        int err;
+        /* id と private keyに分離 */
+        /* format: 00000000&01234567789ABCDEF */
+        uint16_t index = 0;
+        while (strlen(key) >= index) {
+            if ('0' <= key[index] && key[index] <= '9') {
+                obniz_id[index] = key[index];
+                index++;
+            } else if (key[index] == '&') {
+                obniz_id[index] = '\0';
+                index++;
+                break;
+            } else {
+                err = 1;
+                break;
+            }
+        }
+        if (err || index < 9) {
+            return -1; // invalid obniz id
+        }
+        uint16_t head = 0;
+        while (strlen(key) >= index)
+        {
+            if (('0' <= key[index] && key[index] <= '9') || ('A' <= key[index] && key[index] <= 'F') ||
+                ('a' <= key[index] && key[index] <= 'z')) {
+                obniz_key[head] = key[index];
+                index++;
+                head++;
+            } else if (key[index] == '\0') {
+                obniz_key[head] = '\0';
+                break;
+            } else {
+                err = 1;
+                break;
+            }
+        }
+        if (err || head < 1 || head % 2 != 0){
+            return -2;// invalid obniz devicekey
+        }
+        rst = obniz_plugin_device_key(obniz_id,obniz_key);
     }
     obniz_plugin_start();
     return rst;

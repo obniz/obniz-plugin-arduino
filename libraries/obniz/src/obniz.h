@@ -16,8 +16,8 @@ public:
     // obnizOS trigger
     int start();
     int start(HardwareSerial* serial);
-    int start(char *id, char *key);
-    int start(char *id, char *key, HardwareSerial* serial);
+    int start(char *key);
+    int start(char *key, HardwareSerial* serial);
     void end();
 
     // obnizOS IO
