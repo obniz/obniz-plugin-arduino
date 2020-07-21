@@ -1,5 +1,5 @@
 name=obniz plugin
-version=0.1.2
+version=3.4.0
 
 tools.esptool_py.path={runtime.tools.esptool_py.path}
 tools.esptool_py.cmd=esptool

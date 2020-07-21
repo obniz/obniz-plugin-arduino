@@ -1,5 +1,5 @@
 name=obniz plugin
-version=0.1.0
+version=3.4.0
 
 runtime.tools.xtensa-esp32-elf-gcc.path={runtime.platform.path}/tools/xtensa-esp32-elf
 
