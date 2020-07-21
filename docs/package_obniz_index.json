@@ -111,6 +111,41 @@
               "name": "mkspiffs"
             }
           ]
+        },
+        {
+          "category": "ESP32",
+          "name": "obniz",
+          "architecture": "esp32",
+          "url": "https://obniz.github.io/obniz-plugin-arduino/obniz-v3.4.0.zip",
+          "checksum": "SHA-256:020c993d7b31e59f14728a4174b29f474c40d5c79c03e9a409f17db95881e6e7",
+          "size": "44189910",
+          "archiveFileName": "obniz-v3.4.0.zip",
+          "version": "3.4.0",
+          "help": {
+            "online": ""
+          },
+          "boards": [
+            {
+              "name": "obniz"
+            }
+          ],
+          "toolsDependencies": [
+            {
+              "packager": "obniz",
+              "version": "1.22.0-80-g6c4433a-5.2.0",
+              "name": "xtensa-esp32-elf-gcc"
+            },
+            {
+              "packager": "obniz",
+              "version": "2.6.1",
+              "name": "esptool_py"
+            },
+            {
+              "packager": "obniz",
+              "version": "0.2.3",
+              "name": "mkspiffs"
+            }
+          ]
         }
       ],
       "tools": [
