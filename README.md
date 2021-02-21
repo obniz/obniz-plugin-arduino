@@ -4,7 +4,17 @@
 
 Arduinoとしてobnizの機能を扱えるようになるプラグインになります。
 
-## リリースメモ
+## ビルドとリリース方法
+
+
+Macでは以下が必要(homebrewもいる)
+```
+brew install coreutils
+```
+そうでないと以下のエラーが出る
+```
+build.sh: line 36: sha256sum: command not found
+```
 
 スクリプトを用意しておいたので、バージョンを指定するとArduinoで配布するために必要なファイルとJsonのデータを自動的に生成してくれます。
 
