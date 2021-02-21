@@ -187,7 +187,7 @@
           "name": "obniz",
           "architecture": "esp32",
           "url": "https://obniz.github.io/obniz-plugin-arduino/obniz-v3.4.5.zip",
-          "checksum": "SHA-256:3769ff8b6afe781ae53517eb3ba09c300a8310b9904c49446956c83183ca5765",
+          "checksum": "SHA-256:96c322a008b03ab7efa77c11c7ebbf474a47fd84cec6a17083b0027a55ae66f7",
           "size": "53066683",
           "archiveFileName": "obniz-v3.4.5.zip",
           "version": "3.4.5",

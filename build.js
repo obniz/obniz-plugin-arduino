@@ -39,12 +39,12 @@ jsonObject.packages[0].platforms.push(
         "toolsDependencies": [
             {
                 "packager": "obniz",
-                "version": "1.22.0-80-g6c4433a-5.2.0",
+                "version": "1.22.0-97-gc752ad5-5.2.0",
                 "name": "xtensa-esp32-elf-gcc"
             },
             {
                 "packager": "obniz",
-                "version": "2.6.1",
+                "version": "3.0.0",
                 "name": "esptool_py"
             },
             {
