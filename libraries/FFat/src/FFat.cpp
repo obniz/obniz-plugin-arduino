@@ -1,9 +1,9 @@
-// Copyright 2015-2016 Espressif Systems (Shanghai) PTE LTD
+// Copyright 2015-2021 Espressif Systems (Shanghai) PTE LTD
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-//
+
 //     http://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
@@ -133,6 +133,21 @@ size_t F_Fat::totalBytes()
     tot_sect = (fs->n_fatent - 2) * fs->csize;
     sect_size = CONFIG_WL_SECTOR_SIZE;
     return tot_sect * sect_size;
+}
+
+size_t F_Fat::usedBytes()
+{
+    FATFS *fs;
+    DWORD free_clust, used_sect, sect_size;
+
+    BYTE pdrv = ff_diskio_get_pdrv_wl(_wl_handle);
+    char drv[3] = {(char)(48+pdrv), ':', 0};
+    if ( f_getfree(drv, &free_clust, &fs) != FR_OK){
+        return 0;
+    }
+    used_sect = (fs->n_fatent - 2 - free_clust) * fs->csize;
+    sect_size = CONFIG_WL_SECTOR_SIZE;
+    return used_sect * sect_size;
 }
 
 size_t F_Fat::freeBytes()

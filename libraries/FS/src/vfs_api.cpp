@@ -1,9 +1,9 @@
-// Copyright 2015-2016 Espressif Systems (Shanghai) PTE LTD
+// Copyright 2015-2021 Espressif Systems (Shanghai) PTE LTD
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-//
+
 //     http://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
@@ -184,6 +184,11 @@ bool VFSImpl::rmdir(const char *path)
         return false;
     }
 
+    if (strcmp(_mountpoint, "/spiffs") == 0) {
+        log_e("rmdir is unnecessary in SPIFFS");
+        return false;
+    }
+
     VFSFileImpl f(this, path, "r");
     if(!f || !f.isDirectory()) {
         if(f) {
@@ -200,7 +205,7 @@ bool VFSImpl::rmdir(const char *path)
         return false;
     }
     sprintf(temp,"%s%s", _mountpoint, path);
-    auto rc = unlink(temp);
+    auto rc = ::rmdir(temp);
     free(temp);
     return rc == 0;
 }

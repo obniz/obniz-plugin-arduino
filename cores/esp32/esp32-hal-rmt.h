@@ -1,4 +1,4 @@
-// Copyright 2018 Espressif Systems (Shanghai) PTE LTD
+// Copyright 2015-2021 Espressif Systems (Shanghai) PTE LTD
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -40,7 +40,7 @@ typedef enum {
 
 typedef struct rmt_obj_s rmt_obj_t;
 
-typedef void (*rmt_rx_data_cb_t)(uint32_t *data, size_t len);
+typedef void (*rmt_rx_data_cb_t)(uint32_t *data, size_t len, void *arg);
 
 typedef struct {
     union {
@@ -90,8 +90,13 @@ bool rmtReadAsync(rmt_obj_t* rmt, rmt_data_t* data, size_t size, void* eventFlag
 *    and callback with data from ISR
 *
 */
-bool rmtRead(rmt_obj_t* rmt, rmt_rx_data_cb_t cb);
+bool rmtRead(rmt_obj_t* rmt, rmt_rx_data_cb_t cb, void * arg);
 
+/***
+ * Ends async receive started with rmtRead(); but does not
+ * rmtDeInit().
+ */
+bool rmtEnd(rmt_obj_t* rmt);
 
 /*  Additional interface */
 

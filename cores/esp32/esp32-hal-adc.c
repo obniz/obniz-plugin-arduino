@@ -1,4 +1,4 @@
-// Copyright 2015-2016 Espressif Systems (Shanghai) PTE LTD
+// Copyright 2015-2021 Espressif Systems (Shanghai) PTE LTD
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@
 
 #include "driver/adc.h"
 #include "esp_adc_cal.h"
-#include "obniz_plugin.h"
+
 #define DEFAULT_VREF    1100
 static esp_adc_cal_characteristics_t *__analogCharacteristics[2] = {NULL, NULL};
 static uint8_t __analogAttenuation = 3;//11db
@@ -123,7 +123,6 @@ uint16_t __analogRead(uint8_t pin)
         log_e("Pin %u is not ADC pin!", pin);
         return value;
     }
-    obniz_plugin_io_reserve(pin);
     __adcAttachPin(pin);
     if(channel > 9){
         channel -= 10;

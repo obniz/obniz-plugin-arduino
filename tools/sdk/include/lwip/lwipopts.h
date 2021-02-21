@@ -396,6 +396,17 @@
  */
 #define LWIP_TCP_RTO_TIME             CONFIG_LWIP_TCP_RTO_TIME
 
+/**
+ * Set TCP hook for Initial Sequence Number (ISN)
+ */
+#ifdef CONFIG_LWIP_TCP_ISN_HOOK
+#include <lwip/arch.h>
+struct ip_addr;
+u32_t lwip_hook_tcp_isn(const struct ip_addr *local_ip, u16_t local_port,
+                        const struct ip_addr *remote_ip, u16_t remote_port);
+#define LWIP_HOOK_TCP_ISN               lwip_hook_tcp_isn
+#endif
+
 /*
    ----------------------------------
    ---------- Pbuf options ----------
@@ -691,6 +702,15 @@
  */
 #define LWIP_ND6_RDNSS_MAX_DNS_SERVERS  0
 
+/**
+ * MEMP_NUM_ND6_QUEUE: Max number of IPv6 packets to queue during MAC resolution.
+ */
+#define MEMP_NUM_ND6_QUEUE              CONFIG_LWIP_IPV6_MEMP_NUM_ND6_QUEUE
+
+/**
+ * LWIP_ND6_NUM_NEIGHBORS: Number of entries in IPv6 neighbor cache
+ */
+#define LWIP_ND6_NUM_NEIGHBORS          CONFIG_LWIP_IPV6_ND6_NUM_NEIGHBORS
 
 /*
    ---------------------------------------
@@ -757,6 +777,11 @@
  * TCPIP_DEBUG: Enable debugging in tcpip.c.
  */
 #define TCPIP_DEBUG                     LWIP_DBG_OFF
+
+/**
+ * TCP_OOSEQ_DEBUG: Enable debugging in tcpin.c for OOSEQ.
+ */
+#define TCP_OOSEQ_DEBUG                 LWIP_DBG_OFF
 
 /**
  * ETHARP_TRUST_IP_MAC==1: Incoming IP packets cause the ARP table to be

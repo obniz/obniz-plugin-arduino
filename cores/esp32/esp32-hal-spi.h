@@ -1,4 +1,4 @@
-// Copyright 2015-2016 Espressif Systems (Shanghai) PTE LTD
+// Copyright 2015-2021 Espressif Systems (Shanghai) PTE LTD
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -54,7 +54,7 @@ extern "C" {
 struct spi_struct_t;
 typedef struct spi_struct_t spi_t;
 
-spi_t * spiStartBus(uint8_t spi_num, uint32_t freq, uint8_t dataMode, uint8_t bitOrder);
+spi_t * spiStartBus(uint8_t spi_num, uint32_t clockDiv, uint8_t dataMode, uint8_t bitOrder);
 void spiStopBus(spi_t * spi);
 
 //Attach/Detach Signal Pins

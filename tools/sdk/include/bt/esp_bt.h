@@ -331,6 +331,12 @@ esp_err_t esp_bt_controller_disable(void);
  */
 esp_bt_controller_status_t esp_bt_controller_get_status(void);
 
+/**
+ * @brief  Get BT MAC address.
+ * @return Array pointer of length 6 storing MAC address value.
+ */
+uint8_t* esp_bt_get_mac(void);
+
 /** @brief esp_vhci_host_callback
  *  used for vhci call host function to notify what host need to do
  */
@@ -453,28 +459,6 @@ esp_err_t esp_bt_sleep_enable(void);
  *                  - other  : failed
  */
 esp_err_t esp_bt_sleep_disable(void);
-
-/**
- * @brief to check whether bluetooth controller is sleeping at the instant, if modem sleep is enabled
- *
- * Note that this function shall not be invoked before esp_bt_controller_enable()
- * This function is supposed to be used ORIG mode of modem sleep
- *
- * @return  true if in modem sleep state, false otherwise
- */
-bool esp_bt_controller_is_sleeping(void);
-
-/**
- * @brief request controller to wakeup from sleeping state during sleep mode
- *
- * Note that this function shall not be invoked before esp_bt_controller_enable()
- * Note that this function is supposed to be used ORIG mode of modem sleep
- * Note that after this request, bluetooth controller may again enter sleep as long as the modem sleep is enabled
- *
- * Profiling shows that it takes several milliseconds to wakeup from modem sleep after this request.
- * Generally it takes longer if 32kHz XTAL is used than the main XTAL, due to the lower frequency of the former as the bluetooth low power clock source.
- */
-void esp_bt_controller_wakeup_request(void);
 
 /**
  * @brief Manually clear scan duplicate list

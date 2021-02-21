@@ -1,4 +1,4 @@
-// Copyright 2015-2016 Espressif Systems (Shanghai) PTE LTD
+// Copyright 2015-2021 Espressif Systems (Shanghai) PTE LTD
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -943,6 +943,14 @@ static void IRAM_ATTR i2c_isr_handler_default(void* arg)
             p_i2c->dev->int_ena.rx_fifo_full=1; //why?
 
             activeInt &=~I2C_RXFIFO_FULL_INT_ST;
+        }
+
+        if(activeInt & I2C_RXFIFO_OVF_INT_ST) {
+            emptyRxFifo(p_i2c);
+            p_i2c->dev->int_clr.rx_fifo_full=1;
+            p_i2c->dev->int_ena.rx_fifo_full=1; //why?
+
+            activeInt &=~I2C_RXFIFO_OVF_INT_ST;
         }
 
         if (activeInt & I2C_ACK_ERR_INT_ST_M) {//fatal error, abort i2c service

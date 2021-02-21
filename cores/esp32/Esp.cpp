@@ -1,21 +1,16 @@
-/*
- Esp.cpp - ESP31B-specific APIs
- Copyright (c) 2015 Ivan Grokhotkov. All rights reserved.
+// Copyright 2015-2021 Espressif Systems (Shanghai) PTE LTD
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 
- This library is free software; you can redistribute it and/or
- modify it under the terms of the GNU Lesser General Public
- License as published by the Free Software Foundation; either
- version 2.1 of the License, or (at your option) any later version.
-
- This library is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- Lesser General Public License for more details.
-
- You should have received a copy of the GNU Lesser General Public
- License along with this library; if not, write to the Free Software
- Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
- */
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 #include "Arduino.h"
 #include "Esp.h"
@@ -218,6 +213,33 @@ uint8_t EspClass::getChipRevision(void)
     return chip_info.revision;
 }
 
+const char * EspClass::getChipModel(void)
+{
+    uint32_t chip_ver = REG_GET_FIELD(EFUSE_BLK0_RDATA3_REG, EFUSE_RD_CHIP_VER_PKG);
+    uint32_t pkg_ver = chip_ver & 0x7;
+    switch (pkg_ver) {
+        case EFUSE_RD_CHIP_VER_PKG_ESP32D0WDQ6 :
+            return "ESP32-D0WDQ6";
+        case EFUSE_RD_CHIP_VER_PKG_ESP32D0WDQ5 :
+            return "ESP32-D0WDQ5";
+        case EFUSE_RD_CHIP_VER_PKG_ESP32D2WDQ5 :
+            return "ESP32-D2WDQ5";
+        case EFUSE_RD_CHIP_VER_PKG_ESP32PICOD2 :
+            return "ESP32-PICO-D2";
+        case EFUSE_RD_CHIP_VER_PKG_ESP32PICOD4 :
+            return "ESP32-PICO-D4";
+        default:
+            return "Unknown";
+    }
+}
+
+uint8_t EspClass::getChipCores(void)
+{
+    esp_chip_info_t chip_info;
+    esp_chip_info(&chip_info);
+    return chip_info.cores;
+}
+
 const char * EspClass::getSdkVersion(void)
 {
     return esp_get_idf_version();
@@ -309,6 +331,20 @@ bool EspClass::flashRead(uint32_t offset, uint32_t *data, size_t size)
     return spi_flash_read(offset, (uint32_t*) data, size) == ESP_OK;
 }
 
+bool EspClass::partitionEraseRange(const esp_partition_t *partition, uint32_t offset, size_t size) 
+{
+    return esp_partition_erase_range(partition, offset, size) == ESP_OK;
+}
+
+bool EspClass::partitionWrite(const esp_partition_t *partition, uint32_t offset, uint32_t *data, size_t size) 
+{
+    return esp_partition_write(partition, offset, data, size) == ESP_OK;
+}
+
+bool EspClass::partitionRead(const esp_partition_t *partition, uint32_t offset, uint32_t *data, size_t size) 
+{
+    return esp_partition_read(partition, offset, data, size) == ESP_OK;
+}
 
 uint64_t EspClass::getEfuseMac(void)
 {

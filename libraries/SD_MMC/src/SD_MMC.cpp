@@ -1,4 +1,4 @@
-// Copyright 2015-2016 Espressif Systems (Shanghai) PTE LTD
+// Copyright 2015-2021 Espressif Systems (Shanghai) PTE LTD
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -64,6 +64,7 @@ bool SDMMCFS::begin(const char * mountpoint, bool mode1bit)
 #endif
     if(mode1bit) {
         host.flags = SDMMC_HOST_FLAG_1BIT; //use 1-line SD mode
+	slot_config.width = 1;
     }
 
     esp_vfs_fat_sdmmc_mount_config_t mount_config = {

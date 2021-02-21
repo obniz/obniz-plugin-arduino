@@ -31,7 +31,7 @@ extern "C" {
 #include "esp32-hal-i2c.h"
 #include "Wire.h"
 #include "Arduino.h"
-#include "obniz_plugin.h"
+
 TwoWire::TwoWire(uint8_t bus_num)
     :num(bus_num & 1)
     ,sda(-1)
@@ -56,6 +56,17 @@ TwoWire::~TwoWire()
         i2cRelease(i2c);
         i2c=NULL;
     }
+}
+
+bool TwoWire::setPins(int sdaPin, int sclPin)
+{
+    if(i2c) {
+        log_e("can not set pins if begin was already called");
+        return false;
+    }
+    sda = sdaPin;
+    scl = sclPin;
+    return true;
 }
 
 bool TwoWire::begin(int sdaPin, int sclPin, uint32_t frequency)
@@ -100,8 +111,7 @@ bool TwoWire::begin(int sdaPin, int sclPin, uint32_t frequency)
     if(!i2c) {
         return false;
     }
-    obniz_plugin_io_reserve(sdaPin);
-    obniz_plugin_io_reserve(sclPin);
+
     flush();
     return true;
 
