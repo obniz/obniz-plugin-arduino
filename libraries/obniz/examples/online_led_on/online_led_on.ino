@@ -36,7 +36,7 @@ void setup() {
   obniz.onEvent(onEvent);
 
   obniz.start(NULL);
-
+  obniz.pinReserve(LED_IO);
   pinMode(LED_IO, OUTPUT);
 }
 void loop() {
